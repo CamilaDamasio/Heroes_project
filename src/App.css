@@ -12,3 +12,31 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.heroes-list {
+  display: flex;
+  width: 95vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.hero-btn {
+  display: flex;
+  text-align: center;
+  width: 15vw;
+  flex-direction: column;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.hero-name {
+  display: flex;
+  width: 14vw;
+  justify-content: center;
+}
+
+.hero-img {
+  display: flex;
+  margin: auto;
+}
