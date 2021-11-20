@@ -3,8 +3,11 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 20vh;
+  background-color: #000000;
+  background-image: url("img4.jpg");
+  background-position-y: 10%;
+  background-position-x: center;
+  height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,21 +16,55 @@
   color: white;
 }
 
+.search-bar {
+  display: flex;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(45, 49, 48, 0.8);
+  color: aliceblue;
+}
+
+.main {
+  background-color: #282c34;
+  background-image: url("img.jpg");
+  background-position-y: 10%;
+  background-position-x: center;
+  background-size: auto;
+  height: 80vh;
+}
+
 .heroes-list {
   display: flex;
   width: 95vw;
   flex-wrap: wrap;
   justify-content: center;
   margin: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-margin: 15vh;
+  max-height: 68vh;
+  max-width: 100vw
 }
 
 .hero-btn {
   display: flex;
-  text-align: center;
-  width: 15vw;
   flex-direction: column;
   margin-bottom: 5px;
+  border-radius: 7px;
   margin-left: 5px;
+  background-color: rgba(180, 204, 199, 0.6);
+  align-items: center;
+  word-wrap: break-word;
+  box-shadow: 0 2px 5px #000;
+  width: 200px;
+  height: 320px;
+  justify-content: center;
+}
+
+.hero-btn:hover {
+  background-color: rgba(89, 109, 104, 0.6);
+  cursor: pointer;
 }
 
 .hero-name {
@@ -38,5 +75,7 @@
 
 .hero-img {
   display: flex;
+  border-radius: 7px;
   margin: auto;
 }
+

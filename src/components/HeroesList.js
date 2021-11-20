@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState/* , useContext */ } from 'react';
 import { v4 } from 'uuid';
 import Search from './Search';
+// import MyContext from '../Context/myContext';
 
 function HeroesList() {
   const [text, setText] = useState('');
   const [renderHeroes, setRenderedHeroes] = useState([]);
   const [filterHeroes, setFilterHeroes] = useState([]);
+  const [powers, setPowers] = useState([]);
+  // console.log(powers);
+  const [battleHeroes, setBattleHeroes] = useState([]);
+  // const { setArr } = useContext(MyContext);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -27,15 +32,28 @@ function HeroesList() {
     }
   }, [renderHeroes, text]);
 
+  useEffect(() => {
+    setBattleHeroes(battleHeroes);
+    setPowers(battleHeroes);
+    
+    // setArr(total);
+  }, [battleHeroes, powers, setBattleHeroes]);
+  
+  const arr = [{...battleHeroes.powerstats}];
+  const total = arr[0] && Object.values(arr[0]).reduce((acc, current) => (acc += current), 0);
+  console.log([total]);
+
   return (
     <div className="main">
-      <Search value={text} onChange={(search) => setText(search)} />
+      <div className="search-bar">
+        <Search value={text} onChange={(search) => setText(search)} />
+      </div>
       <div className="heroes-list">
         { text ? filterHeroes.map((item, index) => (
           <button
             type="button"
             key={ v4() }
-            onClick={ () => console.log('clicado') }
+            onClick={() => setBattleHeroes(item)}
             data-testid={ `${index}-hero` }
             className="hero-btn"
           >
@@ -51,7 +69,7 @@ function HeroesList() {
           <button
             type="button"
             key={ v4() }
-            onClick={ () => console.log('clicado') }
+            onClick={() => setBattleHeroes(item)}
             data-testid={ `${index}-hero` }
             className="hero-btn"
           >
