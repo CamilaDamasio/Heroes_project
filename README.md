@@ -1,4 +1,4 @@
-# Bem Vindo a esta aplicação!
+# Boas Vindas à esta aplicação!
 
 ## Para iniciar o projeto, execute em seu terminal os passos a seguir:
 

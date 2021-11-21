@@ -1,4 +1,4 @@
-import React, { useEffect, useState/* , useContext */ } from 'react';
+import React, { useEffect, useState, useRef/* , useContext */ } from 'react';
 import { v4 } from 'uuid';
 import Search from './Search';
 // import MyContext from '../Context/myContext';
@@ -7,10 +7,7 @@ function HeroesList() {
   const [text, setText] = useState('');
   const [renderHeroes, setRenderedHeroes] = useState([]);
   const [filterHeroes, setFilterHeroes] = useState([]);
-  const [powers, setPowers] = useState([]);
-  // console.log(powers);
-  const [battleHeroes, setBattleHeroes] = useState([]);
-  // const { setArr } = useContext(MyContext);
+  const [battleHeroes1, setBattleHeroes1] = useState([]);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -32,16 +29,23 @@ function HeroesList() {
     }
   }, [renderHeroes, text]);
 
+  const prevCountRef = useRef();
+
   useEffect(() => {
-    setBattleHeroes(battleHeroes);
-    setPowers(battleHeroes);
-    
-    // setArr(total);
-  }, [battleHeroes, powers, setBattleHeroes]);
-  
-  const arr = [{...battleHeroes.powerstats}];
-  const total = arr[0] && Object.values(arr[0]).reduce((acc, current) => (acc += current), 0);
-  console.log([total]);
+    prevCountRef.current = [battleHeroes1.powerstats];
+    const total = prevCountRef.current[0] && Object.values(prevCountRef.current[0]).reduce((acc, current) => (acc += current), 0);
+    console.log(total);
+    prevCountRef.current = total;
+  });
+
+  const prevCount = prevCountRef.current;
+
+  const arr1 = [battleHeroes1.powerstats];
+  console.log(arr1);
+  const total = arr1[0] && Object.values(arr1[0]).reduce((acc, current) => (acc += current), 0);
+  const test = [prevCount];
+  test.push(total)
+  console.log(test);
 
   return (
     <div className="main">
@@ -53,7 +57,7 @@ function HeroesList() {
           <button
             type="button"
             key={ v4() }
-            onClick={() => setBattleHeroes(item)}
+            onClick={() => setBattleHeroes1(item)}
             data-testid={ `${index}-hero` }
             className="hero-btn"
           >
@@ -69,7 +73,7 @@ function HeroesList() {
           <button
             type="button"
             key={ v4() }
-            onClick={() => setBattleHeroes(item)}
+            onClick={() => setBattleHeroes1(item)}
             data-testid={ `${index}-hero` }
             className="hero-btn"
           >
