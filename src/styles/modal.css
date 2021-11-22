@@ -1,6 +1,9 @@
 .modal-container {
   display: flex;
-  background-image: url("../img.jpg");
+  background-image: url("../bodyImg.jpg");
+  background-position-y: 10%;
+  background-position-x: center;
+  background-size: auto;
   height: 80vh;
 }
 

@@ -4,7 +4,7 @@
 
 .App-header {
   background-color: #000000;
-  background-image: url("img4.jpg");
+  background-image: url("headerImg.jpg");
   background-position-y: 10%;
   background-position-x: center;
   height: 20vh;
@@ -27,7 +27,7 @@
 
 .main {
   background-color: #282c34;
-  background-image: url("img.jpg");
+  background-image: url("bodyImg.jpg");
   background-position-y: 10%;
   background-position-x: center;
   background-size: auto;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef/* , useContext */ } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { v4 } from 'uuid';
 import Search from './Search';
 import "../styles/modal.css";
@@ -8,7 +8,6 @@ function HeroesList() {
   const [renderHeroes, setRenderedHeroes] = useState([]);
   const [filterHeroes, setFilterHeroes] = useState([]);
   const [battleHeroes1, setBattleHeroes1] = useState();
-  console.log(battleHeroes1);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -39,147 +38,140 @@ function HeroesList() {
   const prevCount = prevCountRef.current;
 
   let powers = [prevCount];
-  // powers = prevCount;
   powers.push(battleHeroes1);
-  console.log(powers);
   
   if(powers[1]) {
     if(powers[0] !== undefined) {
-      console.log(powers[0]);
       const total1 = powers[0].powerstats && Object.values(powers[0].powerstats).reduce((acc, current) => (acc += current), 0);
       const total2 = powers[1].powerstats && Object.values(powers[1].powerstats).reduce((acc, current) => (acc += current), 0);
       let powersSum = [];
       powersSum = ([total1, total2]);
-      console.log(powersSum);
         if(powersSum[0] > powersSum[1]) {
-          console.log('1 ganhou');
           return (
             <div className="modal-container">
               <div className="modal">    
                 <button className="close" onClick={() => document.location.reload(true)}>x</button>
-                  <div className="infos">
-                    <div className="result">
-                      <h4 className="hero-name">{powers[0].name} venceu</h4>
-                    </div>
-                    <div className="heroes-info">
-                      <div className="hero1">
-                        <img
-                          alt={`name`}
-                          src={powers[0].images.sm}
-                          className="hero-img-modal"
-                        />
-                          <p><b>{powers[0].name}</b></p>
-                          <p>Combate: {powers[0].powerstats.combat}</p>
-                          <p>Durabilidade: {powers[0].powerstats.durability}</p>
-                          <p>Inteligência: {powers[0].powerstats.intelligence}</p>
-                          <p>Poder: {powers[0].powerstats.power}</p>
-                          <p>Velocidade: {powers[0].powerstats.speed}</p>
-                          <p>Força: {powers[0].powerstats.strength}</p>
-                      </div>
-                      <div className="hero2">
-                        <img
-                          alt={`name`}
-                          src={powers[1].images.sm}
-                          className="hero-img-modal"
-                        />
-                          <p><b>{powers[1].name}</b></p>
-                          <p>Combate: {powers[1].powerstats.combat}</p>
-                          <p>Durabilidade: {powers[1].powerstats.durability}</p>
-                          <p>Inteligência: {powers[1].powerstats.intelligence}</p>
-                          <p>Poder: {powers[1].powerstats.power}</p>
-                          <p>Velocidade: {powers[1].powerstats.speed}</p>
-                          <p>Força: {powers[1].powerstats.strength}</p>
-                      </div>
-                      </div>
+                <div className="infos">
+                  <div className="result">
+                    <h4 className="hero-name">{powers[0].name} venceu</h4>
                   </div>
+                  <div className="heroes-info">
+                    <div className="hero1">
+                      <img
+                        alt={`name`}
+                        src={powers[0].images.sm}
+                        className="hero-img-modal"
+                      />
+                      <p><b>{powers[0].name}</b></p>
+                      <p>Combate: {powers[0].powerstats.combat}</p>
+                      <p>Durabilidade: {powers[0].powerstats.durability}</p>
+                      <p>Inteligência: {powers[0].powerstats.intelligence}</p>
+                      <p>Poder: {powers[0].powerstats.power}</p>
+                      <p>Velocidade: {powers[0].powerstats.speed}</p>
+                      <p>Força: {powers[0].powerstats.strength}</p>
+                    </div>
+                    <div className="hero2">
+                      <img
+                        alt={`name`}
+                        src={powers[1].images.sm}
+                        className="hero-img-modal"
+                      />
+                      <p><b>{powers[1].name}</b></p>
+                      <p>Combate: {powers[1].powerstats.combat}</p>
+                      <p>Durabilidade: {powers[1].powerstats.durability}</p>
+                      <p>Inteligência: {powers[1].powerstats.intelligence}</p>
+                      <p>Poder: {powers[1].powerstats.power}</p>
+                      <p>Velocidade: {powers[1].powerstats.speed}</p>
+                      <p>Força: {powers[1].powerstats.strength}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )
         }
         if(powersSum[0] < powersSum[1]) {
-          console.log('2 ganhou');
           return (
             <div className="modal-container">
               <div className="modal">    
                 <button className="close" onClick={() => document.location.reload(true)}>x</button>
-                  <div className="infos">
-                    <div className="result">
-                      <h4 className="hero-name">{powers[1].name} venceu</h4>
-                    </div>
-                    <div className="heroes-info">
-                      <div className="hero1">
-                        <img
-                          alt={`name`}
-                          src={powers[0].images.sm}
-                          className="hero-img-modal"
-                        />
-                          <p><b>{powers[0].name}</b></p>
-                          <p>Combate: {powers[0].powerstats.combat}</p>
-                          <p>Durabilidade: {powers[0].powerstats.durability}</p>
-                          <p>Inteligência: {powers[0].powerstats.intelligence}</p>
-                          <p>Poder: {powers[0].powerstats.power}</p>
-                          <p>Velocidade: {powers[0].powerstats.speed}</p>
-                          <p>Força: {powers[0].powerstats.strength}</p>
-                      </div>
-                      <div className="hero2">
-                        <img
-                          alt={`name`}
-                          src={powers[1].images.sm}
-                          className="hero-img-modal"
-                        />
-                          <p><b>{powers[1].name}</b></p>
-                          <p>Combate: {powers[1].powerstats.combat}</p>
-                          <p>Durabilidade: {powers[1].powerstats.durability}</p>
-                          <p>Inteligência: {powers[1].powerstats.intelligence}</p>
-                          <p>Poder: {powers[1].powerstats.power}</p>
-                          <p>Velocidade: {powers[1].powerstats.speed}</p>
-                          <p>Força: {powers[1].powerstats.strength}</p>
-                      </div>
-                      </div>
+                <div className="infos">
+                  <div className="result">
+                    <h4 className="hero-name">{powers[1].name} venceu</h4>
                   </div>
+                  <div className="heroes-info">
+                    <div className="hero1">
+                      <img
+                        alt={`name`}
+                        src={powers[0].images.sm}
+                        className="hero-img-modal"
+                      />
+                      <p><b>{powers[0].name}</b></p>
+                      <p>Combate: {powers[0].powerstats.combat}</p>
+                      <p>Durabilidade: {powers[0].powerstats.durability}</p>
+                      <p>Inteligência: {powers[0].powerstats.intelligence}</p>
+                      <p>Poder: {powers[0].powerstats.power}</p>
+                      <p>Velocidade: {powers[0].powerstats.speed}</p>
+                      <p>Força: {powers[0].powerstats.strength}</p>
+                    </div>
+                    <div className="hero2">
+                      <img
+                        alt={`name`}
+                        src={powers[1].images.sm}
+                        className="hero-img-modal"
+                      />
+                      <p><b>{powers[1].name}</b></p>
+                      <p>Combate: {powers[1].powerstats.combat}</p>
+                      <p>Durabilidade: {powers[1].powerstats.durability}</p>
+                      <p>Inteligência: {powers[1].powerstats.intelligence}</p>
+                      <p>Poder: {powers[1].powerstats.power}</p>
+                      <p>Velocidade: {powers[1].powerstats.speed}</p>
+                      <p>Força: {powers[1].powerstats.strength}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )
         }
           if (powers[0].name !== powers[1].name && powersSum[0] === powersSum[1] && powersSum.length !== 0) {
-          console.log('Empatou');
           return (
             <div className="modal-container">
               <div className="modal">    
                 <button className="close" onClick={() => document.location.reload(true)}>x</button>
-                  <div className="infos">
-                    <div className="result">
-                      <h4 className="hero-name">Empate!</h4>
+                <div className="infos">
+                  <div className="result">
+                    <h4 className="hero-name">Empate!</h4>
+                  </div>
+                  <div className="heroes-info">
+                    <div className="hero1">
+                      <img
+                        alt={`name`}
+                        src={powers[0].images.sm}
+                        className="hero-img-modal"
+                      />
+                      <p><b>{powers[0].name}</b></p>
+                      <p>Combate: {powers[0].powerstats.combat}</p>
+                      <p>Durabilidade: {powers[0].powerstats.durability}</p>
+                      <p>Inteligência: {powers[0].powerstats.intelligence}</p>
+                      <p>Poder: {powers[0].powerstats.power}</p>
+                      <p>Velocidade: {powers[0].powerstats.speed}</p>
+                      <p>Força: {powers[0].powerstats.strength}</p>
                     </div>
-                    <div className="heroes-info">
-                      <div className="hero1">
-                        <img
-                          alt={`name`}
-                          src={powers[0].images.sm}
-                          className="hero-img-modal"
-                        />
-                          <p><b>{powers[0].name}</b></p>
-                          <p>Combate: {powers[0].powerstats.combat}</p>
-                          <p>Durabilidade: {powers[0].powerstats.durability}</p>
-                          <p>Inteligência: {powers[0].powerstats.intelligence}</p>
-                          <p>Poder: {powers[0].powerstats.power}</p>
-                          <p>Velocidade: {powers[0].powerstats.speed}</p>
-                          <p>Força: {powers[0].powerstats.strength}</p>
-                      </div>
-                      <div className="hero2">
-                        <img
-                          alt={`name`}
-                          src={powers[1].images.sm}
-                          className="hero-img-modal"
-                        />
-                          <p><b>{powers[1].name}</b></p>
-                          <p>Combate: {powers[1].powerstats.combat}</p>
-                          <p>Durabilidade: {powers[1].powerstats.durability}</p>
-                          <p>Inteligência: {powers[1].powerstats.intelligence}</p>
-                          <p>Poder: {powers[1].powerstats.power}</p>
-                          <p>Velocidade: {powers[1].powerstats.speed}</p>
-                          <p>Força: {powers[1].powerstats.strength}</p>
-                      </div>
+                    <div className="hero2">
+                      <img
+                        alt={`name`}
+                        src={powers[1].images.sm}
+                        className="hero-img-modal"
+                      />
+                      <p><b>{powers[1].name}</b></p>
+                      <p>Combate: {powers[1].powerstats.combat}</p>
+                      <p>Durabilidade: {powers[1].powerstats.durability}</p>
+                      <p>Inteligência: {powers[1].powerstats.intelligence}</p>
+                      <p>Poder: {powers[1].powerstats.power}</p>
+                      <p>Velocidade: {powers[1].powerstats.speed}</p>
+                      <p>Força: {powers[1].powerstats.strength}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -187,9 +179,7 @@ function HeroesList() {
           )
         }
       }
-  } else {
-    console.log('clique em mais um');
-  }  
+  } 
 
   return (
     <div className="main">
