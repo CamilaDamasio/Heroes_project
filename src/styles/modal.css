@@ -1,20 +1,27 @@
+.modal-container {
+  display: flex;
+  background-image: url("../img.jpg");
+  height: 80vh;
+}
+
 .modal-container.open {
   display: flex;
 }
 
 .modal {
-  background-color: rgba(0,18,153, .8);
-  border: 5px solid #eddb3c;
+  background-color: rgb(136, 140, 167);
+  border: 5px solid #777777;
   border-radius: 7px;
-  color: #eddb3c;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   font-size: 20px;
   min-width: 250px;
-  padding: 20px;
+  padding: 10px;
   position: relative;
   width: 60%;
   margin: auto;
+  height: 75vh;
 }
 
 .modal a {
@@ -69,11 +76,18 @@
   display: flex;
   flex-direction: column;
   line-height: 0;
+  align-items: center;
 }
 
 .heroes-info {
   display: flex;
   justify-content: space-around;
+}
+
+.hero-img-modal {
+  border-radius: 7px;
+  height: 30vh;
+  width: 15vw;
 }
 
 p {

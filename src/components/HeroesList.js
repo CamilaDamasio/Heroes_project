@@ -7,7 +7,7 @@ function HeroesList() {
   const [text, setText] = useState('');
   const [renderHeroes, setRenderedHeroes] = useState([]);
   const [filterHeroes, setFilterHeroes] = useState([]);
-  const [battleHeroes1, setBattleHeroes1] = useState([]);
+  const [battleHeroes1, setBattleHeroes1] = useState();
   console.log(battleHeroes1);
 
   useEffect(() => {
@@ -33,19 +33,20 @@ function HeroesList() {
   const prevCountRef = useRef();
 
   useEffect(() => {
-    prevCountRef.current = [battleHeroes1];
+    prevCountRef.current = battleHeroes1;
   }, [battleHeroes1]);
 
   const prevCount = prevCountRef.current;
 
-  let powers = [];
-  powers = [prevCount];
+  let powers = [prevCount];
+  // powers = prevCount;
   powers.push(battleHeroes1);
-  console.log(powers[0]);
-  if(powers[0]) {
-    if(powers[0][0].length !== 0) {
-      console.log(powers[0][0]);
-      const total1 = powers[0][0].powerstats && Object.values(powers[0][0].powerstats).reduce((acc, current) => (acc += current), 0);
+  console.log(powers);
+  
+  if(powers[1]) {
+    if(powers[0] !== undefined) {
+      console.log(powers[0]);
+      const total1 = powers[0].powerstats && Object.values(powers[0].powerstats).reduce((acc, current) => (acc += current), 0);
       const total2 = powers[1].powerstats && Object.values(powers[1].powerstats).reduce((acc, current) => (acc += current), 0);
       let powersSum = [];
       powersSum = ([total1, total2]);
@@ -58,28 +59,28 @@ function HeroesList() {
                 <button className="close" onClick={() => document.location.reload(true)}>x</button>
                   <div className="infos">
                     <div className="result">
-                      <h4 className="hero-name">{powers[0][0].name}</h4>
+                      <h4 className="hero-name">{powers[0].name} venceu</h4>
                     </div>
                     <div className="heroes-info">
                       <div className="hero1">
                         <img
                           alt={`name`}
-                          src={powers[0][0].images.sm}
-                          className="hero-img"
+                          src={powers[0].images.sm}
+                          className="hero-img-modal"
                         />
-                          <p><b>{powers[0][0].name}</b></p>
-                          <p>Combate: {powers[0][0].powerstats.combat}</p>
-                          <p>Durabilidade: {powers[0][0].powerstats.durability}</p>
-                          <p>Inteligência: {powers[0][0].powerstats.intelligence}</p>
-                          <p>Poder: {powers[0][0].powerstats.power}</p>
-                          <p>Velocidade: {powers[0][0].powerstats.speed}</p>
-                          <p>Força: {powers[0][0].powerstats.strength}</p>
+                          <p><b>{powers[0].name}</b></p>
+                          <p>Combate: {powers[0].powerstats.combat}</p>
+                          <p>Durabilidade: {powers[0].powerstats.durability}</p>
+                          <p>Inteligência: {powers[0].powerstats.intelligence}</p>
+                          <p>Poder: {powers[0].powerstats.power}</p>
+                          <p>Velocidade: {powers[0].powerstats.speed}</p>
+                          <p>Força: {powers[0].powerstats.strength}</p>
                       </div>
                       <div className="hero2">
                         <img
                           alt={`name`}
                           src={powers[1].images.sm}
-                          className="hero-img"
+                          className="hero-img-modal"
                         />
                           <p><b>{powers[1].name}</b></p>
                           <p>Combate: {powers[1].powerstats.combat}</p>
@@ -109,22 +110,22 @@ function HeroesList() {
                       <div className="hero1">
                         <img
                           alt={`name`}
-                          src={powers[0][0].images.sm}
-                          className="hero-img"
+                          src={powers[0].images.sm}
+                          className="hero-img-modal"
                         />
-                          <p><b>{powers[0][0].name}</b></p>
-                          <p>Combate: {powers[0][0].powerstats.combat}</p>
-                          <p>Durabilidade: {powers[0][0].powerstats.durability}</p>
-                          <p>Inteligência: {powers[0][0].powerstats.intelligence}</p>
-                          <p>Poder: {powers[0][0].powerstats.power}</p>
-                          <p>Velocidade: {powers[0][0].powerstats.speed}</p>
-                          <p>Força: {powers[0][0].powerstats.strength}</p>
+                          <p><b>{powers[0].name}</b></p>
+                          <p>Combate: {powers[0].powerstats.combat}</p>
+                          <p>Durabilidade: {powers[0].powerstats.durability}</p>
+                          <p>Inteligência: {powers[0].powerstats.intelligence}</p>
+                          <p>Poder: {powers[0].powerstats.power}</p>
+                          <p>Velocidade: {powers[0].powerstats.speed}</p>
+                          <p>Força: {powers[0].powerstats.strength}</p>
                       </div>
                       <div className="hero2">
                         <img
                           alt={`name`}
                           src={powers[1].images.sm}
-                          className="hero-img"
+                          className="hero-img-modal"
                         />
                           <p><b>{powers[1].name}</b></p>
                           <p>Combate: {powers[1].powerstats.combat}</p>
@@ -140,7 +141,7 @@ function HeroesList() {
             </div>
           )
         }
-        if(powersSum[0] === powersSum[1] && powersSum.length !== 0) {
+          if (powers[0].name !== powers[1].name && powersSum[0] === powersSum[1] && powersSum.length !== 0) {
           console.log('Empatou');
           return (
             <div className="modal-container">
@@ -154,22 +155,22 @@ function HeroesList() {
                       <div className="hero1">
                         <img
                           alt={`name`}
-                          src={powers[0][0].images.sm}
-                          className="hero-img"
+                          src={powers[0].images.sm}
+                          className="hero-img-modal"
                         />
-                          <p><b>{powers[0][0].name}</b></p>
-                          <p>Combate: {powers[0][0].powerstats.combat}</p>
-                          <p>Durabilidade: {powers[0][0].powerstats.durability}</p>
-                          <p>Inteligência: {powers[0][0].powerstats.intelligence}</p>
-                          <p>Poder: {powers[0][0].powerstats.power}</p>
-                          <p>Velocidade: {powers[0][0].powerstats.speed}</p>
-                          <p>Força: {powers[0][0].powerstats.strength}</p>
+                          <p><b>{powers[0].name}</b></p>
+                          <p>Combate: {powers[0].powerstats.combat}</p>
+                          <p>Durabilidade: {powers[0].powerstats.durability}</p>
+                          <p>Inteligência: {powers[0].powerstats.intelligence}</p>
+                          <p>Poder: {powers[0].powerstats.power}</p>
+                          <p>Velocidade: {powers[0].powerstats.speed}</p>
+                          <p>Força: {powers[0].powerstats.strength}</p>
                       </div>
                       <div className="hero2">
                         <img
                           alt={`name`}
                           src={powers[1].images.sm}
-                          className="hero-img"
+                          className="hero-img-modal"
                         />
                           <p><b>{powers[1].name}</b></p>
                           <p>Combate: {powers[1].powerstats.combat}</p>
