@@ -4,6 +4,8 @@
 
 `git clone git@github.com:CamilaDamasio/Heroes_project.git`
 
+### Abra a pasta do projeto:
+
 `cd Heroes_project`
 
 ### Instale as dependências:
@@ -13,3 +15,5 @@
 ### Dê um start na aplicação:
 
 `npm start`
+
+## Divirta-se!
