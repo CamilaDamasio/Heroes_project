@@ -1,0 +1,81 @@
+.modal-container.open {
+  display: flex;
+}
+
+.modal {
+  background-color: rgba(0,18,153, .8);
+  border: 5px solid #eddb3c;
+  border-radius: 7px;
+  color: #eddb3c;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  min-width: 250px;
+  padding: 20px;
+  position: relative;
+  width: 60%;
+  margin: auto;
+}
+
+.modal a {
+  color: #eddb3c;
+}
+
+.open .modal {
+  animation: modal .3s;
+}
+
+.skills-ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.close {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  border: none;
+  position: absolute;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 28px;
+  height: 50px;
+  right: 0px;
+  top: 0px;
+  width: 50px;
+}
+
+.close:hover {
+  color: rgb(230, 8, 0);
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
+
+.hero-name {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.hero1, .hero2 {
+  display: flex;
+  flex-direction: column;
+  line-height: 0;
+}
+
+.heroes-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+p {
+  margin: 15px;
+}
